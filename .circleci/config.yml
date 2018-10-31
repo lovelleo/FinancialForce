@@ -5,5 +5,5 @@ machine:
 
 test:
   post:
-   - ant retrieveUnpackagedCCI
-   - ant DeployUnpackagedCCI
+   - ant retrieve
+   - ant deploy
