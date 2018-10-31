@@ -1,0 +1,43 @@
+<apex:page standardController="Contact" recordSetvar="Cont" showHeader="false" sidebar="false">
+    <head>
+        <style>
+            .head { font-size:1.3em; }
+            .slds-scope {background-color: #ccc !important;}
+        </style> 
+    </head>
+    <apex:slds />
+    <body class="slds">
+        <div class="slds-scope">
+            <apex:form >
+                <apex:sectionHeader title="Financial Force Contacts" subtitle="Financial Home"/>
+                <apex:panelGrid columns="2">
+                <!-- To Download as PDF -->
+                    <apex:outputLink value="FinancialForcePDF" styleClass="slds-button slds-button_neutral slds-float_right">
+                    	<apex:outputtext value="Export As PDF "/>
+                    </apex:outputLink>
+                    <!-- To Download as XLS -->
+                    <apex:outputLink value="FinancialForceXLS"  styleClass="slds-button slds-button_neutral slds-float_left">
+                    	<apex:outputtext value="Export As XLS "/>
+                    </apex:outputLink>
+                </apex:panelGrid>
+                <apex:pageBlock >
+                      <apex:pageBlockTable value="{!cont}" var="item"  id="list">
+                        <apex:column headerValue="Name">
+                            <apex:outputLink value="/{!item.id}">
+                                <apex:outputText >{!item.name}</apex:outputText>
+                            </apex:outputLink>
+                        </apex:column>
+                        <apex:column headerValue="Account Name">
+                            <apex:outputLink value="/{!item.accountid}">
+                                <apex:outputtext value="{!item.Account.name}"/>
+                            </apex:outputlink>
+                        </apex:column>
+                        <apex:column headerValue="Phone">
+                            <apex:outputtext value="{!item.phone}"/>
+                        </apex:column>
+                    </apex:pageBlockTable>
+                </apex:pageBlock>
+            </apex:form>
+        </div>
+    </body>
+</apex:page>
