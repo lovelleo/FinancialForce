@@ -6,5 +6,11 @@ jobs:
     steps:
       - checkout
       - run: 
+          name: ant -lib lib/ -buildfile build.xml
+          command: ant -lib lib/ -buildfile build.xml
+      - run: 
           name: ant retrive
+          command: ant retrive
+      - run: 
+          name: ant push
           command: ant push
