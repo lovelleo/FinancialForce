@@ -1,0 +1,80 @@
+<!-- Page to Save Contact as PDF Format -->
+<apex:page standardController="Contact" contentType="application/octet-stream#FinancialForce.pdf" extensions="extContactPDF" renderAs="pdf" cache="false" applyHtmlTag="false" applyBodyTag="false" standardStylesheets="false" showHeader="false" sidebar="false">
+    <head>
+        <style>
+            .head { font-size:1.3em; }
+            @page {
+            @top-center {
+            content: element(header);
+            }
+            
+            @bottom-left {
+            content: element(footer);
+            }
+            }
+            
+            div.header {
+            padding: 10px;
+            position: running(header);
+            }
+            
+            div.footer {
+            display: block;
+            padding: 5px;
+            position: running(footer);
+            }
+            
+            .pagenumber:before {
+            content: counter(page);
+            }
+            
+            .pagecount:before {
+            content: counter(pages);
+            }
+            
+            .row{
+            background-color:#ccc;                 
+            }
+            .row1{
+            width:200px; 
+            padding:10px;
+            }
+            .row2{
+            width:500px;   
+            padding:10px;            
+            }
+            .row3{
+            width:500px; 
+            padding:10px;
+            }
+        </style>
+    </head>
+    <body> 
+        <div class="header" style="background-color:#eee;box-shadow: 10px 10px 5px #888888;margin-bottom:200px; with:100%">
+          Financial Force &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Financial Force &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Financial Force   
+        </div>  
+        <apex:repeat value="{!lstPDFList}" var="lstContact"  id="list">
+            <table style="margin-top:20px;">
+                <tr>  
+                    <td style="background-color:#ccc;padding:10px; width:200px;">Name</td>
+                    <td style="background-color:#ccc;padding:10px; width:500px;">Account Name</td>
+                    <td style="background-color:#ccc;padding:10px; width:500px;">Phone</td> 
+                </tr>
+                <apex:repeat value="{!lstContact.lstPdfContact}" var="item"  id="list">
+                    <tr>
+                        <td style="padding:10px;">{!item.name}</td>
+                        <td style="padding:10px;">{!item.Account.Name}</td>
+                        <td style="padding:10px;">{!item.phone}</td>
+                    </tr>
+                </apex:repeat>
+                <br />
+                <br />
+                <div class="footer">
+                    Page Number : {!lstContact.pagecount}
+                </div>
+                <div style="page-break-before: always">
+                </div>
+            </table>
+        </apex:repeat>
+    </body>
+</apex:page>

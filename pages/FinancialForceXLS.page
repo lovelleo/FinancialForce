@@ -1,0 +1,11 @@
+<!-- Page to display Contatc in the XLS Format -->
+<apex:page standardController="Contact" extensions="extContactPDF" contentType="application/octet-stream#FinancialForce.xls" cache="false" applyHtmlTag="false" applyBodyTag="false" standardStylesheets="false" showHeader="false" sidebar="false">
+    <table><tr><td></td><td>Financial Force</td><td> Financial Force</td></tr></table>
+     <apex:pageBlock title="Financial Force" >
+        <apex:pageBlockTable value="{!lstCon}" var="contact">
+            <apex:column value="{!contact.Name}"/>
+            <apex:column value="{!contact.Account.Name}"/>
+            <apex:column value="{!contact.phone}"/> 
+        </apex:pageBlockTable>
+    </apex:pageBlock>
+</apex:page>
