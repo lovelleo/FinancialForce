@@ -5,12 +5,10 @@ jobs:
       - image: circleci/openjdk:8-jdk
     steps:
       - checkout
-      - run: 
-          name: ant -lib lib/ -buildfile build.xml
-          command: ant -lib lib/ -buildfile build.xml
+     
       - run: 
           name: ant retrive
-          command: ant retrive
+          command: ant -lib lib/ -buildfile build.xml retrive
       - run: 
           name: ant push
-          command: ant push
+          command: ant -lib lib/ -buildfile build.xml push
