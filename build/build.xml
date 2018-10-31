@@ -10,10 +10,10 @@
         </classpath>
     </taskdef>
 	<target name="retrieve">
-	  <!-- Retrieve the contents into another directory -->
-	  <sf:retrieve username="${sf.Cadenceusername}" password="${sf.Cadencepassword}" sessionId="${sf.sessionId}" serverurl="${sf.serverurl}" maxPoll="${sf.maxPoll}" retrieveTarget="Cadence 1" pollWaitMillis="40000" unpackaged="Cadence 1/package.xml"/>
+	  <mkdir dir="DirOutput"/>
+	  <sf:retrieve username="${sf.username}" password="${sf.password}" sessionId="${sf.sessionId}" serverurl="${sf.serverurl}" maxPoll="${sf.maxPoll}" retrieveTarget="DirOutput" pollWaitMillis="40000" unpackaged="package.xml"/>
     </target>
 	<target name="push">
-       <sf:deploy username="${sf.Cadenceusername}" password="${sf.Cadencepassword}" serverurl="${sf.serverurl}" maxPoll="${sf.maxPoll}" deployRoot="Cadence 1" rollbackOnError="true" />
+       <sf:deploy username="${sf.tousername}" password="${sf.topassword}" serverurl="${sf.serverurl}" maxPoll="${sf.maxPoll}" deployRoot="DirOutput" rollbackOnError="true" />
     </target>
 </project>
