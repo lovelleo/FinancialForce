@@ -2,7 +2,7 @@
     <head>
         <style>
             .head { font-size:1.3em; }
-            .slds-scope {background-color: #ccc !important;}
+            .slds-scope {background-color: blue !important;}
         </style> 
     </head>
     <apex:slds />
