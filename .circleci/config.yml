@@ -6,11 +6,12 @@ jobs:
       - image: circleci/java:8-jdk
     steps:
       - checkout
-        - run:
+      
+      - run:
           name: maven install
           command: sudo npm install -g maven   
       - run:
-          name: npm Install
+          name: npm install
           command: sudo npm install
           working_directory: project/src 
       - run: 
