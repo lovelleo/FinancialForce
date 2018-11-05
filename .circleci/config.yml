@@ -10,9 +10,7 @@ jobs:
       - run:
           name: maven install
           command: sudo npm install -g maven   
-      - run: 
-          name: ant push
-          command: ant -lib lib/ -buildfile build/build.xml
+     
       - run: 
           name: SonarQube
           command: mvn sonar:sonar \
