@@ -1,4 +1,4 @@
-<project name="Sample usage of Salesforce Ant tasks" default="retrieve" basedir="." xmlns:sf="antlib:com.salesforce">
+<project name="Sample usage of Salesforce Ant tasks" default="push" basedir="." xmlns:sf="antlib:com.salesforce">
     <property file="build.properties"/>
     <property environment="env"/>
     <condition property="sf.username" value=""> <not> <isset property="sf.username"/> </not> </condition>
