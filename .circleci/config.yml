@@ -6,9 +6,7 @@ jobs:
       - image: circleci/openjdk:8-jdk
     steps:
       - checkout
-      - run: 
-          name: ant push
-          command: ant push
+     
       - run:
           name: npm Install
           command: sudo npm install
