@@ -2,15 +2,29 @@ version: 2.0
 jobs:
   build:
     docker:
+      - image: circleci/node:4.8.2
       - image: circleci/openjdk:8-jdk
     steps:
       - checkout
       - run: 
           name: ant push
           command: ant push
+      - run:
+          name: npm Install
+          command: sudo npm install
+          working_directory: project/src 
+      - run:
+          name: npm install maven
+          command: npm install maven
+          working_directory: project
       - run: 
           name: Checking Maven's Version
           command: mvn -version
       - run: 
           name: SonarQube
-          command: mvn sonar:sonar \  -Dsonar.projectKey=lovelleo_FinancialForce \   -Dsonar.organization=lovelleo-github \   -Dsonar.host.url=https://sonarcloud.io \ -Dsonar.login=9a4110206b9285c2363b29acdae48e774e490f98 
+          command: mvn sonar:sonar \
+                   -Dsonar.projectKey=lovelleo_FinancialForce \
+                   -Dsonar.organization=lovelleo-github \
+                   -Dsonar.host.url=https://sonarcloud.io \
+                   -Dsonar.login=9a4110206b9285c2363b29acdae48e774e490f98
+          
